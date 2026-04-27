@@ -1,6 +1,10 @@
-import Image from "next/image";
+import { dbConnect } from "@/lib/db";
 
-export default function Home() {
+
+export default async function Home() {
+
+  //await dbConnect();
+  
   return (
     <>
     <h1>Contact Form App</h1>
