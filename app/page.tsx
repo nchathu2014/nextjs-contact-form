@@ -3,7 +3,7 @@ import { dbConnect } from "@/lib/db";
 
 export default async function Home() {
 
-  //await dbConnect();
+  await dbConnect();
   
   return (
     <>
