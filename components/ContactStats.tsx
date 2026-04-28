@@ -29,7 +29,7 @@ export default async function ContactStats() {
         <CardHeader className="pb-2">
           <CardTitle className="text-sm font-medium">Read</CardTitle>
           <CardContent>
-            <div className="text-2xl font-bold  text-yellow-600">{stats.readCount??'0'}</div>
+            <div className="text-2xl font-bold  text-orange-600">{stats.readCount??'0'}</div>
           </CardContent>
         </CardHeader>
       </Card>
