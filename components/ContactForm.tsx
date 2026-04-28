@@ -7,7 +7,7 @@ import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { createContact } from "@/actions";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 export default function ContactForm() {
   const router = useRouter();
@@ -22,7 +22,19 @@ export default function ContactForm() {
       toast.success(data?.message, { position: "top-center" });
 
       setIsSubmitting(false);
-      router.push("/contacts");
+
+      //Instead of do the manual navigation as below, I used the server redirection by using
+      // redirect() inside the Server Actions createContact
+
+      //issue: caching along redirection
+      //router.refresh();
+      //router.push("/contacts");
+
+      //Neuclear solution
+      //window.location.href = "/contacts";
+      
+
+      //redirect("/contacts");
     } catch (err) {
       setIsSubmitting(false);
       const errorMsg =
@@ -80,7 +92,11 @@ export default function ContactForm() {
               />
             </div>
           </div>
-          <Button type="submit" disabled={isSubmitting} className="w-full hover:cursor-pointer hover:bg-gray-300 hover:text-black">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full hover:cursor-pointer hover:bg-gray-300 hover:text-black"
+          >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
         </form>

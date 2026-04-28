@@ -16,7 +16,7 @@ export default async function Home() {
         </div>
         <div className=" flex mb-4 mx-auto justify-center item-center">
           <Button variant="outline">
-            <Link href={"/contacts"}>See Contacts</Link>
+            <Link href={"/contacts"}>See Contacts</Link> 
           </Button>
         </div>
 
