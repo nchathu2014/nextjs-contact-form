@@ -9,14 +9,21 @@ export default async function Home() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Next.JS Server Actions</h1>
           <p className="text-xl text-gray-600 max-2xl mx-auto">
-            Built with: Next.JS, Shadcn UI Components, Server Actions, MongoDB
-            Atlas and Cache Revalidation (By using revalidatePath() &
-            revalidateTag())
+            <span className="font-semibold">Built with:</span> Next.JS, Shadcn
+            UI Components, Server Actions, MongoDB Atlas with Cache Revalidation
           </p>
+          <div>
+           <Link href={'/golden-rule'}>
+            <button className="bg-orange-400 rounded p-2 mt-4 hover:cursor-pointer hover:text-white">
+              Golden Rules I Learned
+            </button>
+           </Link>
+          </div>
         </div>
+
         <div className=" flex mb-4 mx-auto justify-center item-center">
           <Button variant="outline">
-            <Link href={"/contacts"}>See Contacts</Link> 
+            <Link href={"/contacts"}>See Contacts</Link>
           </Button>
         </div>
 
