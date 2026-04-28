@@ -14,7 +14,6 @@ export function Header() {
               Contact Form
             </Link>
           </h1>
-          <Link href={"/built-with"}> Built with</Link>
         </div>
       </div>
     </nav>
