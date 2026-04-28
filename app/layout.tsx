@@ -5,8 +5,12 @@ import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
 
-const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,14 +37,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-mono", jetbrainsMono.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-mono",
+        jetbrainsMono.variable,
+      )}
     >
       <body className={`${inter.className} min-h-full flex flex-col`}>
-        <Header/>
-        <main className="flex-1 m-5">
-          {children}
-        </main>
-        <Footer/>
+        <Header />
+        <main className="flex-1 m-5">{children}</main>
+        <Toaster />
+        <Footer />
       </body>
     </html>
   );
