@@ -13,11 +13,11 @@ export default async function Home() {
             UI Components, Server Actions, MongoDB Atlas with Cache Revalidation
           </p>
           <div>
-           <Link href={'/golden-rule'}>
-            <button className="bg-orange-400 rounded p-2 mt-4 hover:cursor-pointer hover:text-white">
-              Golden Rules I Learned
-            </button>
-           </Link>
+            <Link href={"/golden-rule"}>
+              <button className="bg-orange-400 rounded py-3 px-3 mt-4 hover:cursor-pointer hover:text-white">
+                Golden Rules I Learned
+              </button>
+            </Link>
           </div>
         </div>
 
