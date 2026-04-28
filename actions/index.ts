@@ -32,7 +32,7 @@ export async function createContact(formData: FormData) {
       subject: subject.trim() as string,
       message: message.trim() as string,
     });
-    revalidatePath('/contacts')
+    revalidatePath("/contacts");
     return {
       status: "success",
       data: {
@@ -87,22 +87,39 @@ export async function updateContact(contactId: string, status: string) {
   }
 }
 
-
+//TODO: invalidateTag is not properly working, do a investigation
 // Server Action with a Cache-Tags, this cache will revalidate later by using this key "contact-stats-key"
+// export async function getContactStats() {
+//   const getCachedStats = unstable_cache(
+//     async () => {
+//       await dbConnect();
+//       const total = await Contact.countDocuments();
+//       const newCount = await Contact.countDocuments({ status: "new" });
+//       const readCount = await Contact.countDocuments({ status: "read" });
+//       const repliedCount = await Contact.countDocuments({ status: "replied" });
+
+//       return { total, newCount, readCount, repliedCount };
+//     },
+//     ["contact-stats-key"],
+//     { tags: ["contact-stats-key"] },
+//   );
+
+//   return getCachedStats();
+// }
+
 export async function getContactStats() {
-  const getCachedStats = unstable_cache(
-    async () => {
-      await dbConnect();
-      const total = await Contact.countDocuments();
-      const newCount = await Contact.countDocuments({ status: "new" });
-      const readCount = await Contact.countDocuments({ status: "read" });
-      const repliedCount = await Contact.countDocuments({ status: "replied" });
-
-      return { total, newCount, readCount, repliedCount };
-    },
-    ["contact-stats-key"],
-    { tags: ["contact-stats-key"] },
-  );
-
-  return getCachedStats();
+  try {
+    await dbConnect();
+    const total = await Contact.countDocuments();
+    const newCount = await Contact.countDocuments({ status: "new" });
+    const readCount = await Contact.countDocuments({ status: "read" });
+    const repliedCount = await Contact.countDocuments({ status: "replied" });
+    return { total, newCount, readCount, repliedCount };
+  } catch (error) {
+    console.log("Error updating contact status");
+    return {
+      status: "error",
+      error: JSON.parse(JSON.stringify(error)),
+    };
+  }
 }
