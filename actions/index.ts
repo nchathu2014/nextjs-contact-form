@@ -55,6 +55,7 @@ export async function getAllContacts() {
     dbConnect();
     // lean convert mongo object to a readable object
     const response = await Contact.find({}).sort("createdAt:-1").lean();
+    
     return response?.map((contact) => ({
       ...contact,
       _id: contact?._id.toString(),
