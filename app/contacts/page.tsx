@@ -1,7 +1,13 @@
 import ContactList from "@/components/ContactList";
 import ContactStats from "@/components/ContactStats";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Contacts",
+  description: "Contact list of all user",
+};
 
 export default async function Contacts() {
   return (
