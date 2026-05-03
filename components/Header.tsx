@@ -9,11 +9,14 @@ export function Header() {
           <h1>
             <Link
               href={BASE_URL}
-              className="text-2xl md:text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50"
+              className="text-3xl md:text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50"
             >
-              Contact Form
+              <span className="text-orange-500">R</span>elay
             </Link>
           </h1>
+          <div className="text-sm">
+            <span className="text-orange-600">Send</span> a message. <span className="text-orange-600">Start</span> a conversation
+          </div>
         </div>
       </div>
     </nav>
